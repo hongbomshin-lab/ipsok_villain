@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>입속빌런 증상 체크</title>
+<meta name="description" content="증상을 고르면 의심해 볼 것, 집에서 할 일, 찾아갈 진료과를 알려 드려요. 치아 살리는 치대생 @ipsok_villain">
+<meta property="og:title" content="입속빌런 증상 체크">
+<meta property="og:description" content="어디가 불편해요? 증상을 고르면 의심해 볼 것과 집에서 할 일, 찾아갈 진료과를 알려 드려요.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#FFF6F5">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 112'%3E%3Cpath fill='%23E23A40' d='M60 8C96 8 109 38 107 66C105 92 85 101 60 101C35 101 15 92 13 66C11 38 24 8 60 8Z'/%3E%3Cellipse fill='%23fff' cx='44' cy='53' rx='9' ry='10.5'/%3E%3Cellipse fill='%23fff' cx='76' cy='53' rx='9' ry='10.5'/%3E%3Ccircle fill='%232B1B24' cx='47.5' cy='55' r='4.6'/%3E%3Ccircle fill='%232B1B24' cx='79.5' cy='55' r='4.6'/%3E%3C/svg%3E">
+<style>
+:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&display=swap">
+<style>
+/* Layout: 한 손 모바일 단일 컬럼(최대 520px). 홈 3열 증상 그리드 → 질문 1~2개 → 결과(의심 질환 · 릴스 · 집에서 · 진료과) */
+:root{
+  --bg:#FFF6F5; --surface:#FFFFFF; --ink:#2B1B24; --ink-2:#6F5963; --line:#F0DADB;
+  --villain:#E23A40; --v-line:#7A1418; --gum:#FCDCDA; --tag-ink:#A3202A; --blush:#FF9DA6;
+  --care-bg:#E2F4EC; --care-ink:#16654A;
+  --reel-bg:#2B1B24; --reel-ink:#FFF3F3; --reel-sub:#D9BFC7;
+  --u-now:#CF2338; --u-soon:#C9590A; --u-watch:#9A7400; --u-home:#1A7F5C;
+  --f-display:"Jua","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;
+  --f-body:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#1A1216; --surface:#251920; --ink:#F7EAED; --ink-2:#C4ADB6; --line:#3D2A33;
+  --villain:#F04A50; --gum:#4A2630; --tag-ink:#FFC2C5;
+  --care-bg:#14342A; --care-ink:#8BE3C1;
+  --reel-bg:#F7EAED; --reel-ink:#2B1B24; --reel-sub:#6F5963;
+  --u-now:#FF6B7A; --u-soon:#FF9C52; --u-watch:#E8C14A; --u-home:#52D3A0;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#1A1216; --surface:#251920; --ink:#F7EAED; --ink-2:#C4ADB6; --line:#3D2A33;
+  --villain:#F04A50; --gum:#4A2630; --tag-ink:#FFC2C5;
+  --care-bg:#14342A; --care-ink:#8BE3C1;
+  --reel-bg:#F7EAED; --reel-ink:#2B1B24; --reel-sub:#6F5963;
+  --u-now:#FF6B7A; --u-soon:#FF9C52; --u-watch:#E8C14A; --u-home:#52D3A0;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;text-size-adjust:100%;-webkit-tap-highlight-color:transparent;word-break:keep-all;overflow-wrap:anywhere}
+.wrap{max-width:520px;margin:0 auto;padding-block:16px 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+button,a{font:inherit;color:inherit;touch-action:manipulation}
+:focus-visible{outline:3px solid var(--villain);outline-offset:2px;border-radius:12px}
+[tabindex="-1"]:focus{outline:none}
+.view{display:flex;flex-direction:column;gap:18px;animation:in .28s ease-out both}
+@keyframes in{from{opacity:.0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* mascot */
+.mascot svg{display:block;width:100%;height:auto}
+.m-body{fill:var(--villain)} .m-line{stroke:var(--v-line)} .m-white{fill:#fff} .m-pupil{fill:#2B1B24} .m-blush{fill:var(--blush)} .m-shadow{fill:var(--ink);opacity:.08}
+.bob{animation:bob 3.2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-4px) rotate(2deg)}}
+
+/* home */
+.hero{display:flex;align-items:center;gap:12px}
+.hero .mascot{width:60px;flex:none}
+.eyebrow{margin:0;font-size:12px;font-weight:500;letter-spacing:.02em;color:var(--ink-2)}
+h1{margin:2px 0 0;font-family:var(--f-display);font-weight:400;font-size:clamp(25px,7.2vw,31px);line-height:1.15;white-space:nowrap}
+.lede{margin:0;color:var(--ink-2);font-size:14px;line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:339px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.card{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-height:96px;padding:12px 10px 11px;text-align:left;cursor:pointer;
+  background:var(--surface);border:1.5px solid var(--line);border-radius:18px;transition:transform .12s,border-color .12s}
+.card:active{transform:scale(.96);border-color:var(--villain)}
+.tag{font-size:11px;font-weight:700;letter-spacing:.03em;color:var(--tag-ink);background:var(--gum);border-radius:999px;padding:2px 8px}
+.card .lb{font-family:var(--f-display);font-size:clamp(15.5px,4.5vw,18px);line-height:1.2}
+.nw{white-space:nowrap}
+.card .ht{font-size:11.5px;line-height:1.38;color:var(--ink-2);margin-top:auto}
+@media (hover:hover){.card:hover,.opt:hover{border-color:var(--villain)}}
+.meta{margin:0;font-size:12.5px;color:var(--ink-2);text-align:center}
+
+/* nav */
+.nav{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.ghost{background:none;border:0;min-height:44px;padding:10px 6px;margin-inline:-6px;cursor:pointer;font-size:14.5px;font-weight:500;color:var(--ink-2)}
+.ghost:hover{color:var(--ink)}
+.chiprow{display:flex;align-items:center;gap:8px}
+.chiprow .mascot{width:34px}
+
+/* question */
+.qwrap{display:flex;flex-direction:column;gap:6px}
+h2{margin:0;font-family:var(--f-display);font-weight:400;font-size:27px;line-height:1.22;text-wrap:balance}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:16px 16px;text-align:left;cursor:pointer;
+  background:var(--surface);border:1.5px solid var(--line);border-radius:16px;font-size:15.5px;font-weight:500;line-height:1.45;transition:transform .12s,border-color .12s}
+.opt:active{transform:scale(.985);border-color:var(--villain)}
+.opt .ar{flex:none;color:var(--villain);font-size:20px;line-height:1}
+
+/* result */
+.upill{align-self:flex-start;display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;padding:6px 12px 6px 10px;border-radius:999px;
+  color:var(--u);background:color-mix(in srgb,var(--u) 13%,var(--surface))}
+.upill::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--u)}
+.u-now{--u:var(--u-now)} .u-soon{--u:var(--u-soon)} .u-watch{--u:var(--u-watch)} .u-home{--u:var(--u-home)}
+.path{margin:0;font-size:12.5px;color:var(--ink-2)}
+.dx{display:flex;flex-direction:column;gap:8px}
+.dx .why{margin:0;font-size:15.5px;line-height:1.7}
+
+.reel{display:grid;grid-template-columns:52px minmax(0,1fr);gap:12px 14px;align-items:center;padding:18px;border-radius:22px;background:var(--reel-bg);color:var(--reel-ink)}
+.reel .mascot{width:52px}
+.reel .k{margin:0;font-size:12px;font-weight:500;color:var(--reel-sub)}
+.reel .t{margin:2px 0 0;font-family:var(--f-display);font-size:19px;line-height:1.3}
+.reel .t .no{color:var(--villain);margin-right:4px}
+.play{grid-column:1/-1;display:flex;align-items:center;justify-content:center;gap:8px;padding:13px 16px;border-radius:999px;
+  background:var(--villain);color:#fff;font-weight:700;font-size:15.5px;text-decoration:none}
+.play:active{transform:scale(.98)}
+.play svg{width:14px;height:14px;fill:#fff}
+.more{grid-column:1/-1;display:flex;flex-direction:column;gap:6px;padding-top:4px;border-top:1px solid color-mix(in srgb,var(--reel-ink) 14%,transparent)}
+.more p{margin:6px 0 0;font-size:12px;color:var(--reel-sub)}
+.more a{font-size:14px;text-decoration:none;display:flex;gap:6px}
+.more a .no{color:var(--villain);font-weight:700;flex:none}
+.soon-chip{font-size:13.5px;display:flex;gap:6px}
+.soon-chip .b{flex:none;font-size:11px;font-weight:700;padding:1px 7px;border-radius:999px;background:color-mix(in srgb,var(--villain) 22%,transparent);color:var(--reel-ink);align-self:center}
+
+.panel{border-radius:18px;padding:16px 16px 14px;display:flex;flex-direction:column;gap:10px}
+.panel h3{margin:0;font-size:14px;font-weight:700;letter-spacing:.02em}
+.panel ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.panel li{position:relative;padding-left:22px;font-size:15px;line-height:1.55}
+.care{background:var(--care-bg)}
+.care h3{color:var(--care-ink)}
+.care li::before{content:"";position:absolute;left:2px;top:.5em;width:11px;height:6px;border-left:2.5px solid var(--care-ink);border-bottom:2.5px solid var(--care-ink);transform:rotate(-45deg)}
+.goto{background:var(--surface);border:1.5px solid var(--line)}
+.goto h3{color:var(--u-soon)}
+.goto li::before{content:"";position:absolute;left:4px;top:.55em;width:8px;height:8px;border-radius:50%;background:var(--u-soon)}
+.depts{display:flex;flex-wrap:wrap;gap:8px;padding-top:4px}
+.dept{display:flex;flex-direction:column;padding:8px 12px;border-radius:12px;background:var(--gum)}
+.dept b{font-size:14.5px;color:var(--tag-ink)}
+.dept span{font-size:12px;color:var(--ink-2)}
+.note{margin:0;font-size:12.5px;color:var(--ink-2);line-height:1.55}
+
+.foot{display:flex;flex-direction:column;gap:10px;padding-top:6px}
+.btn-line{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px 16px;border-radius:999px;border:1.5px solid var(--ink);background:none;
+  font-weight:700;font-size:15px;text-decoration:none;cursor:pointer}
+.btn-soft{padding:12px 16px;border-radius:999px;border:0;background:var(--gum);color:var(--tag-ink);font-weight:700;font-size:15px;cursor:pointer}
+.fine{margin:6px 0 0;font-size:11.5px;line-height:1.6;color:var(--ink-2);text-align:center}
+
+@media (prefers-reduced-motion: reduce){.view,.bob{animation:none}.card,.opt,.play{transition:none}}
+</style>
+
+</head>
+<body>
+<div class="wrap"><main id="app" aria-live="polite"></main></div>
+
+<script>
+/* ===== 연결 정보: 새 편을 올리면 여기 코드만 채우면 됩니다 (instagram.com/reel/코드/) ===== */
+const PROFILE = 'https://www.instagram.com/ipsok_villain/';
+const EP = {
+  1:['내 사랑니, 뽑아야 할까요?','DdL0td3p4k-'],
+  2:['시린 이, 살릴 수 있는 신호','Dd_RQr8Jpem'],
+  3:['스케일링 후 시린 이, 정상인지 가르는 기준','Dd_ZARxpBJH'],
+  5:['충치 개수 들었을 때 꼭 물어볼 한 가지','DeBwcvZpbVO'],
+  6:['사랑니 뽑은 날, 빨지도 뱉지도 마세요','DeCFAiWJTTe'],
+  7:['자꾸 생기는 구내염, 병원 가야 하는 기준','DeENszgJo5q'],
+  8:['씹을 때만 찌릿, 금 간 이의 신호','DeESG0kpioE'],
+  9:['치약 고를 때 하나만 봐야 한다면?','DeGS18Fp_bX'],
+  10:['콜라 마시고 양치 언제 해야 할까?','DeHJhxZp-ZH'],
+  11:['아침에 턱이 뻐근하거나 소리가 난다면','DeJaYEUiQFz'],
+  12:['누런 이, 미백으로 될지 가르는 기준','DeKJIcvp975'],
+  13:['치과 마취 후 밥 언제 먹어도 될까?','DeK6ip6iWuu'],
+  14:['안 아픈 사랑니, 뽑을까 둘까?','DeMM7WVo3R2'],
+  15:['알보칠 바를 때 왜 이렇게 아플까?','DeOq4adCVqJ'],
+  16:['신경치료 받은 날, 이 통증 정상일까?','DeQ7CfgkvF3'],
+  17:['잘 끼던 교정기가 갑자기 찌르는 이유','DeTEXbmidM9'],
+  19:['양치했는데 입냄새, 어디서 나는 걸까?','DeYwSH6iYhz'],
+  20:['치실 쓸 때 나는 피, 계속 써도 될까?','DebVIssiTTC'],
+  21:['같은 자리에만 음식이 끼는 이유','Ded55biiRtc'],
+  22:['사랑니 붓기, 다음 날 더 심한 이유','DegeqPtEvzV'],
+  23:['교정할 때 왜 생니를 뽑을까',''],
+  24:['점 같은 작은 충치도 깎아야 할까',''],
+  25:['치아 빠지고 그냥 두면 안 되는 이유',''],
+  26:['임플란트 미룰수록 심기 더 어렵다?',''],
+  27:['양치할 때 피, 정상일까','']
+};
+
+const DEPT = {
+  '보존과':'충치·신경치료·깨진 이','치주과':'잇몸과 잇몸뼈','구강내과':'턱관절·입안 점막·통증',
+  '구강악안면외과':'사랑니·발치·턱','보철과':'빠진 이 채우기·씌우기','교정과':'치아 배열',
+  '소아치과':'어린이 치아','치료받은 치과':'경과를 가장 잘 아는 곳','발치한 치과':'경과를 가장 잘 아는 곳',
+  '응급 진료 치과':'야간·주말 응급 진료하는 곳','응급실':'치과가 문을 닫았다면','이비인후과':'편도·코','내과':'속쓰림·혈액·먹는 약'
+};
+const ULABEL = {now:'지금 바로', soon:'며칠 안에 치과', watch:'관리하며 지켜보기', home:'집에서 관리'};
+
+const SYM = [
+  {id:'cold',  tag:'이',     lb:'시려요',              ht:'찬 것, 단 것에 찌릿'},
+  {id:'pain',  tag:'이',     lb:'아파요',              ht:'욱신, 씹을 때 통증'},
+  {id:'gum',   tag:'잇몸',   lb:'잇몸 <span class="nw">피·붓기</span>', ht:'양치할 때 피, 부음'},
+  {id:'wisdom',tag:'사랑니', lb:'사랑니',              ht:'붓기, 발치 고민, 발치 후'},
+  {id:'food',  tag:'이 사이',lb:'음식이 껴요',         ht:'같은 자리에 매번'},
+  {id:'breath',tag:'입안',   lb:'입냄새',              ht:'양치해도 나요'},
+  {id:'sore',  tag:'입안',   lb:'입안이 헐었어요',     ht:'구내염, 쓸린 상처'},
+  {id:'jaw',   tag:'턱',     lb:'턱이 이상해요',       ht:'소리, 뻐근함, 안 벌어짐'},
+  {id:'look',  tag:'이',     lb:'이가 변했어요',       ht:'검은 점, 누런 색, 깨짐'},
+  {id:'loose', tag:'이',     lb:'이가 흔들려요',       ht:'빠진 자리, 다쳐서 빠짐'},
+  {id:'after', tag:'치료 후',lb:'치료받고 불편해요',   ht:'스케일링, 신경치료, 마취'},
+  {id:'ortho', tag:'교정',   lb:'교정 중이에요',       ht:'찔림, 욱신, 유지장치'}
+];
+
+/* 질문 노드: [보기, 다음] — 다음이 'R:id'면 결과, 아니면 다음 질문 */
+const Q = {
+  cold:{q:'시린 느낌, 얼마나 가요?',o:[
+    ['자극을 떼면 몇 초 안에 사라져요','cold2'],
+    ['떼도 한참 남거나, 가만히 있어도 욱신거려요','R:pulp'],
+    ['뜨거운 것에 욱신하고, 찬 걸 대면 오히려 편해요','R:pulp']]},
+  cold2:{q:'최근 몇 주 안에 스케일링을 받았나요?',o:[['네, 받았어요','R:scale'],['아니요','R:dentin']]},
+  pain:{q:'언제 아파요?',o:[
+    ['씹을 때만, 특정 방향으로 물면 찌릿해요','R:crack'],
+    ['가만히 있어도 욱신, 밤에 더 심해요','R:pulp'],
+    ['이가 붕 뜬 느낌, 씹거나 두드리면 아파요','R:apical'],
+    ['찬 것·단 것 먹을 때만 아파요','cold'],
+    ['최근에 치료받은 이예요','after']]},
+  gum:{q:'피 말고 다른 증상도 있나요?',o:[
+    ['피만 나고 아프진 않아요','R:gingivitis'],
+    ['잇몸이 붓고 욱신, 고름이나 뾰루지가 보여요','R:abscess'],
+    ['잇몸이 내려가서 이가 길어 보여요','R:recession'],
+    ['양치와 상관없이 피가 나고, 멍도 잘 들어요','R:systemic']]},
+  wisdom:{q:'지금 어떤 상황이에요?',o:[
+    ['사랑니 쪽 잇몸이 붓고 아파요','R:pericor'],
+    ['안 아픈데 뽑아야 하나 고민돼요','R:wisdomQuiet'],
+    ['뽑은 지 며칠 안 됐어요','ext']]},
+  ext:{q:'뽑은 뒤 지금 어때요?',o:[
+    ['오늘 뽑았어요','R:extDay'],
+    ['2~3일째인데 오히려 더 부었어요','R:extSwell'],
+    ['며칠 괜찮다가 갑자기 더 아파요','R:dry'],
+    ['입술이나 턱이 계속 저려요','R:numb']]},
+  food:{q:'어디에 끼어요?',o:[
+    ['늘 같은 자리에만 껴요','R:foodSame'],
+    ['씌우거나 때운 이 옆에만 껴요','R:foodSame'],
+    ['여기저기, 이 사이가 넓어진 느낌이에요','R:recession']]},
+  breath:{q:'언제 냄새가 나요?',o:[
+    ['아침에 일어났을 때만','R:breathAM'],
+    ['양치해도 금방 다시 나요','R:breathOral'],
+    ['목에서 하얀 알갱이가 나오거나, 코·속쓰림 증상도 있어요','R:breathOut']]},
+  sore:{q:'어떤 모양이에요?',o:[
+    ['동그랗고 하얀 궤양, 1~2주면 낫는데 또 생겨요','R:aphthous'],
+    ['교정기나 뾰족한 이, 틀니에 쓸린 자리예요','R:traumaUlcer'],
+    ['2주 넘게 안 낫거나, 문질러도 안 지워지는 하얀·빨간 반점이에요','R:ulcerLong']]},
+  jaw:{q:'어떤 느낌이에요?',o:[
+    ['입 벌릴 때 딸깍 소리만 나요 (안 아파요)','R:click'],
+    ['아침에 턱이나 관자놀이가 뻐근해요','R:clench'],
+    ['입을 벌리거나 씹을 때 턱이 아파요','R:tmdPain'],
+    ['갑자기 입이 잘 안 벌어져요','R:lock']]},
+  look:{q:'무엇이 보여요?',o:[
+    ['검은 점이나 갈색 줄','R:earlyCaries'],
+    ['전체적으로 누래요','R:yellow'],
+    ['이가 깨졌어요','R:fracture'],
+    ['한 개만 유독 어둡게 변했어요','R:darkOne']]},
+  loose:{q:'어떤 상황이에요?',o:[
+    ['어른 이가 흔들려요','R:mobile'],
+    ['빠진 채로 그냥 두고 있어요','R:missing'],
+    ['다쳐서 이가 통째로 빠졌어요','R:avulsion'],
+    ['아이 유치가 흔들려요','R:baby']]},
+  after:{q:'어떤 치료를 받았어요?',o:[
+    ['스케일링','R:scale'],
+    ['신경치료','R:postEndo'],
+    ['충치 치료 (때운 이)','R:postFill'],
+    ['사랑니·발치','ext'],
+    ['마취하고 막 끝났어요','R:postAnes']]},
+  ortho:{q:'어떤 게 불편해요?',o:[
+    ['철사나 장치가 볼을 찔러요','R:orthoPoke'],
+    ['장치를 끼우거나 조인 뒤 이가 욱신거려요','R:orthoAche'],
+    ['장치 주변 잇몸에서 피가 나요','R:gingivitis'],
+    ['교정 끝나고 유지장치를 잘 안 껴요','R:retainer']]}
+};
+
+/* 결과: u 응급도 · ul 라벨 덮어쓰기 · name 의심 질환 · why 이유 · home 집에서 · go 치과로 · dept 진료과 · ep 관련 편 */
+const R = {
+  pulp:{u:'soon',name:'치아 신경(치수) 염증',why:'자극이 사라져도 통증이 남거나 저절로 욱신거리면, 치아 속 신경까지 염증이 번졌을 수 있어요. 이 단계는 집에서 되돌리기 어려워요.',
+    home:['그쪽으로 아주 차갑거나 뜨거운 것 피하기','진통제는 포장에 적힌 용법대로만','언제, 얼마나 오래 아팠는지 적어 가기'],
+    go:['얼굴이 붓거나 열이 나면 오늘 바로','진통제를 먹어도 잠을 못 잘 만큼 아프면 바로'],dept:['보존과'],ep:[2]},
+  scale:{u:'home',name:'스케일링 후 일시적 시림',why:'치석이 덮고 있던 뿌리 쪽이 드러나 잠시 예민해진 거예요. 이를 깎아서 생긴 게 아니고, 대개 몇 주에 걸쳐 줄어들어요.',
+    home:['시린이 치약(질산칼륨·불소 성분)을 꾸준히','부드러운 칫솔로 힘 빼고 닦기','날이 갈수록 줄어드는지 지켜보기'],
+    go:['몇 주가 지나도 줄지 않거나 점점 심해지면','한 개 치아만 유독 심하면'],dept:['치주과'],ep:[3]},
+  dentin:{u:'watch',name:'상아질 과민증, 또는 초기 충치',why:'잇몸이 내려가거나 이 목이 패이면 안쪽 상아질이 드러나 찬 것에 잠깐 찌릿해요. 몇 초 안에 사라지는 시림은 대개 이 경우예요.',
+    home:['시린이 치약을 2주 이상 꾸준히. 효과가 바로 나지 않아요','칫솔질은 힘 빼고 짧게 왕복','탄산·산성 음료 뒤엔 바로 양치하지 말고 물부터'],
+    go:['시린 곳이 한 개로 좁혀지거나 점점 오래가면','검은 점이나 구멍이 보이면'],dept:['보존과'],ep:[2,10]},
+  crack:{u:'soon',name:'금 간 치아 (치아 균열)',why:'충치가 없어도 씹는 힘에 금이 벌어졌다 닫히면서 찌릿해요. 엑스레이에 잘 안 보여서, 어떻게 아픈지 설명하는 게 진단의 열쇠예요.',
+    home:['그쪽으로 얼음·견과·뼈처럼 단단한 것 씹지 않기','어떤 음식을 어느 방향으로 씹을 때 아픈지 기억해 두기','자면서 이를 간다는 말을 들었다면 함께 말하기'],
+    go:['찌릿함이 잦아지거나 가만히 있어도 아프기 시작하면. 금이 깊어진 신호예요'],dept:['보존과'],ep:[8]},
+  apical:{u:'soon',name:'뿌리 끝 염증, 또는 잇몸 염증',why:'이가 떠 있는 느낌과 두드릴 때 통증은 뿌리 끝이나 이를 둘러싼 조직에 염증이 있을 때 흔해요.',
+    home:['그쪽으로 씹지 않기','주변에 음식이 끼었는지 치실로 확인','진통제는 용법대로'],
+    go:['잇몸에 고름 주머니가 보이면','얼굴이 붓기 시작하면 오늘'],dept:['보존과','치주과'],ep:[16]},
+  gingivitis:{u:'home',name:'치은염 (초기 잇몸 염증)',why:'건강한 잇몸은 양치로 피가 나지 않아요. 피는 치태 때문에 잇몸이 이미 부어 있다는 신호예요.',
+    home:['피 나는 곳을 피하지 말고, 부드럽게 더 꼼꼼히','치실이나 치간칫솔 하루 한 번','보통 1~2주 꾸준히 하면 줄어요'],
+    go:['2주를 제대로 닦아도 피가 계속 나면. 굳은 치석은 칫솔로 안 떨어져요','이가 흔들리거나 잇몸이 내려가면'],dept:['치주과'],ep:[27,20]},
+  abscess:{u:'soon',name:'잇몸 고름 (치주농양 등)',why:'고름이나 뾰루지처럼 볼록한 건 잇몸 깊은 곳이나 뿌리 끝 염증이 밖으로 길을 낸 거예요. 터져서 덜 아파도 원인은 그대로예요.',
+    home:['짜거나 터뜨리지 않기','그쪽도 부드럽게 양치','미지근한 소금물 헹굼은 잠깐 편할 뿐, 치료는 아니에요'],
+    go:['얼굴이나 턱 아래까지 붓거나 열이 나면 오늘','그렇지 않아도 며칠 안에 치과'],dept:['치주과','보존과'],ep:[]},
+  recession:{u:'watch',name:'잇몸 내려감 (치은 퇴축)',why:'잇몸이 내려가면 치아 사이 삼각형 공간이 넓어져 여기저기 음식이 끼고, 드러난 뿌리 쪽이 시리기도 해요.',
+    home:['치실보다 치간칫솔이 맞을 수 있어요. 힘 안 들이고 들어가는 크기로','칫솔질은 힘 빼고, 잇몸 쪽은 살살'],
+    go:['이가 흔들리거나 피·고름이 같이 나면','검진 때 잇몸 검사 요청'],dept:['치주과'],ep:[21]},
+  systemic:{u:'soon',name:'잇몸만의 문제가 아닐 수 있어요',why:'양치와 상관없이 피가 나고 몸에 멍도 잘 든다면, 혈액 상태나 먹는 약(피를 묽게 하는 약 등)과 관련 있을 수 있어요.',
+    home:['먹는 약 목록 정리해 두기','피가 나면 깨끗한 거즈로 10분 이상 꾹 누르기'],
+    go:['피가 멈추지 않으면 응급실','내과 진료와 함께 치과 검진'],dept:['내과','치주과'],ep:[]},
+  pericor:{u:'soon',name:'사랑니 주위염 (지치주위염)',why:'반쯤 나온 사랑니 위 잇몸 틈에 음식과 세균이 고여 염증이 생겨요. 피곤할 때 자주 도져요.',
+    home:['그 자리를 칫솔 끝으로 부드럽게 닦아 음식물 빼기','미지근한 소금물로 가볍게 헹구기','잠 충분히 자기. 피곤하면 잘 도져요'],
+    go:['입이 잘 안 벌어지거나, 삼키기 힘들거나, 열이 나면 오늘','같은 자리가 반복해서 부으면 뽑을지 상담'],dept:['구강악안면외과'],ep:[1,14]},
+  wisdomQuiet:{u:'watch',ul:'검진 때 확인',name:'증상 없는 사랑니',why:'뽑을지는 사랑니 자체보다 나온 모양과 앞 어금니에 주는 영향으로 정해요. 비스듬히 앞 이에 닿아 있으면 그 사이에 충치가 생기기 쉬워요.',
+    home:['사랑니와 앞 어금니 사이를 치실로 꼼꼼히','검진 때 파노라마 엑스레이로 위치 확인 요청'],
+    go:['앞 어금니가 시리거나 음식이 끼기 시작하면','잇몸이 반복해서 부으면'],dept:['구강악안면외과'],ep:[14,1]},
+  extDay:{u:'home',name:'발치한 날 관리',why:'뽑은 자리에 생긴 피떡(혈병)이 상처를 덮는 마개예요. 첫날은 이 마개를 지키는 게 전부예요.',
+    home:['거즈는 안내받은 시간 동안 꽉 물기','빨대, 침 뱉기, 세게 헹구기, 흡연은 피하기','뽑은 쪽 말고 반대쪽으로 부드러운 음식'],
+    go:['거즈를 다시 물어도 피가 계속 흐르면 발치한 치과에 연락'],dept:['발치한 치과'],ep:[6]},
+  extSwell:{u:'home',name:'발치 후 붓기 (흔한 경과)',why:'붓기는 수술 다음 날부터 2~3일째에 가장 심하고, 그 뒤로 줄어드는 게 보통이에요.',
+    home:['첫 이틀은 볼 바깥에 냉찜질 (대고 쉬기를 반복)','잘 때 베개를 높여 머리 올리기','처방받은 약은 시간 맞춰'],
+    go:['3~4일이 지나도 더 커지거나 열이 나면','삼키기나 숨쉬기가 불편하면 응급실'],dept:['발치한 치과'],ep:[22]},
+  dry:{u:'soon',name:'드라이 소켓 (건성 발치와) 의심',why:'피떡이 일찍 빠져 뼈가 드러나면, 며칠 괜찮다가 귀 쪽으로 퍼지는 심한 통증이 와요. 보통 뽑고 2~4일째에 시작해요.',
+    home:['뽑은 자리를 혀나 손가락으로 건드리지 않기','흡연과 빨대는 계속 피하기','진통제는 용법대로'],
+    go:['진통제로도 잘 안 잡히면 발치한 치과에 바로 연락. 소독하고 약을 넣으면 편해져요'],dept:['발치한 치과'],ep:[6]},
+  numb:{u:'soon',name:'아래 입술·턱 감각 이상',why:'아래 사랑니 뿌리 가까이 지나는 신경이 눌리거나 자극받으면 저림이 생길 수 있어요. 시간이 지나며 돌아오는 경우가 많지만 경과 확인이 필요해요.',
+    home:['감각이 둔한 동안 뜨거운 음식에 데지 않게 주의','저린 범위를 사진으로 남겨 변화 기록'],
+    go:['마취가 풀릴 시간이 지났는데도 저리면 발치한 치과에 바로 알리기'],dept:['발치한 치과','구강악안면외과'],ep:[]},
+  foodSame:{u:'watch',name:'치아 사이 접촉이 헐거워짐',why:'음식이 늘 같은 곳에만 낀다면 그 자리 치아 사이가 벌어졌을 수 있어요. 옆면 충치, 움직인 치아, 오래된 보철의 틈이 흔한 원인이에요.',
+    home:['낀 날 바로 치실로 빼기. 이쑤시개로 쑤시지 않기','그 자리 잇몸이 붓거나 피 나는지 보기'],
+    go:['그 자리가 시리거나 검게 보이면','검진 때 “여기 매번 껴요”라고 정확히 짚기'],dept:['보존과','보철과'],ep:[21]},
+  breathAM:{u:'home',name:'아침 입냄새 (생리적 구취)',why:'자는 동안 침이 줄어 세균이 늘어서 생겨요. 일어나 양치하면 사라지는 정도면 정상 범위예요.',
+    home:['자기 전 양치와 치실 꼼꼼히','혀 안쪽까지 닦기','물 자주 마시기'],
+    go:['낮에도 계속 나면 다른 원인 확인'],dept:[],ep:[19]},
+  breathOral:{u:'watch',name:'혀 백태·치석·잇몸 염증',why:'입냄새는 대부분 입안에서 생겨요. 칫솔이 잘 안 닿는 혀 안쪽과 잇몸 틈이 주된 출처예요.',
+    home:['혀 클리너로 안쪽에서 바깥으로 몇 번','치실 후 냄새가 나는 자리를 찾아 더 꼼꼼히','입이 마르지 않게 물 자주'],
+    go:['잇몸에서 피가 같이 나면 스케일링과 잇몸 검사'],dept:['치주과'],ep:[19]},
+  breathOut:{u:'watch',name:'입 밖 원인도 확인해 볼 차례',why:'편도 결석, 축농증, 위식도 역류처럼 입 밖에서 오는 냄새도 있어요. 입안 관리를 해도 그대로면 이쪽을 의심해요.',
+    home:['편도 알갱이는 억지로 파내지 않기','입안 관리는 그대로 계속'],
+    go:['편도·코 증상은 이비인후과, 속쓰림은 내과'],dept:['이비인후과','내과'],ep:[19]},
+  aphthous:{u:'home',name:'재발성 아프타성 구내염',why:'가장 흔한 구내염으로, 대개 1~2주 안에 저절로 나아요. 피곤하거나 입안이 긁힌 뒤 잘 생겨요.',
+    home:['맵고 짜고 신 음식 잠시 피하기','혀로 자꾸 건드리지 않기','약국 구내염 약은 설명서대로. 강한 산성 약은 바른 뒤 헹구기'],
+    go:['2주가 지나도 그대로면','한 번에 여러 개, 크게, 열과 함께 자주 생기면'],dept:['구강내과'],ep:[7,15]},
+  traumaUlcer:{u:'home',name:'쓸려서 생긴 궤양 (외상성 궤양)',why:'같은 자리가 계속 쓸리면 헐어요. 원인을 없애면 보통 1~2주 안에 아물어요.',
+    home:['교정 장치는 교정 왁스로 덮기','날카로운 이나 보철은 원인 치과에 알리기'],
+    go:['원인을 없앤 뒤 2주가 지나도 안 나으면'],dept:['교정과','보존과'],ep:[17]},
+  ulcerLong:{u:'soon',name:'진찰이 필요한 점막 변화',why:'2주 넘게 낫지 않는 헌 자리, 문질러도 지워지지 않는 하얀·빨간 반점은 아프지 않아도 확인이 필요해요.',
+    home:['크기를 사진으로 기록','담배와 술 줄이기'],
+    go:['2주가 넘었다면 미루지 말고 진찰'],dept:['구강내과','구강악안면외과'],ep:[7]},
+  click:{u:'watch',name:'턱관절 소리 (관절원판 잡음)',why:'관절 사이 원판이 입을 벌릴 때 제자리로 넘어가며 나는 소리일 수 있어요. 아프지 않고 잘 벌어지면 흔하고, 대개 지켜봐요.',
+    home:['하품하거나 크게 베어 물 때 조심','턱 괴기, 한쪽으로만 씹기 줄이기','껌·오징어처럼 오래 씹는 것 줄이기'],
+    go:['아프기 시작하거나 입이 덜 벌어지면'],dept:['구강내과'],ep:[11]},
+  clench:{u:'watch',name:'이 악물기·이갈이로 인한 근육 피로',why:'자는 동안이나 집중할 때 이를 꽉 물면 씹는 근육이 지쳐 아침에 뻐근해요.',
+    home:['낮에 수시로 “입술은 닫고, 위아래 이는 떼기”','뻐근한 볼과 관자놀이에 따뜻한 찜질','하루 몇 번 악물고 있는지 알람으로 체크'],
+    go:['2~3주 해도 그대로거나, 이가 닳고 금이 가면 장치(스플린트) 상담'],dept:['구강내과'],ep:[11,8]},
+  tmdPain:{u:'watch',name:'턱관절 장애 (근육·관절 통증)',why:'턱관절 장애는 씹는 근육 쪽, 관절원판 쪽, 관절 뼈 쪽으로 나뉘고, 어디냐에 따라 관리가 달라요. 그래서 진찰로 구분해요.',
+    home:['며칠은 부드러운 음식, 입 크게 벌리지 않기','따뜻한 찜질','진통제는 용법대로'],
+    go:['1~2주가 지나도 그대로면 진찰','귀 앞이 붓거나 열이 나면 빨리'],dept:['구강내과'],ep:[11]},
+  lock:{u:'soon',name:'입 벌림 제한 (원판이 걸린 상태 의심)',why:'관절원판이 앞으로 빠진 채 돌아오지 않으면, 소리가 멈추면서 입이 덜 벌어질 수 있어요. 생긴 지 얼마 안 됐을수록 풀기 쉬워요.',
+    home:['억지로 크게 벌리지 않기','부드러운 음식'],
+    go:['며칠 안에 진찰. 빨리 갈수록 좋아요','턱이 빠져 입이 안 다물어지면 응급실'],dept:['구강내과'],ep:[11]},
+  earlyCaries:{u:'watch',ul:'검진 때 확인',name:'초기 충치, 또는 착색',why:'겉층에만 머문 초기 충치는 깎지 않고 지켜보기도 해요. 착색인지 충치인지는 눈으로만 구분하기 어려워서 검진에서 봐요.',
+    home:['불소 1,000ppm 이상 치약으로 하루 2번 (성인은 1,450ppm 안팎)','단 간식은 양보다 먹는 횟수를 줄이기','그 자리를 사진으로 남겨 변화 보기'],
+    go:['시리거나 구멍이 느껴지면','검진 때 “깎아야 하나요, 지켜봐도 되나요?” 물어보기'],dept:['보존과'],ep:[24,5,9]},
+  yellow:{u:'home',name:'치아 본래 색, 또는 착색',why:'치아 속 상아질 색이 비치는 경우라면 세게 닦아도 하얘지지 않아요. 미백이 잘 되는 이와 안 되는 이가 따로 있어요.',
+    home:['세게 문지르거나 연마력 강한 치약 계속 쓰지 않기','커피나 차 마신 뒤 물로 헹구기'],
+    go:['미백 상담 전에 충치와 잇몸 상태부터 확인'],dept:['보존과'],ep:[12]},
+  fracture:{u:'soon',name:'깨진 치아 (치아 파절)',why:'깨진 크기와 신경까지 닿았는지에 따라 치료가 달라요. 작게 깨져도 금이 안쪽으로 이어졌을 수 있어요.',
+    home:['깨진 조각은 물이나 우유에 담아 챙기기','날카로운 면에 혀·볼 다치지 않게 주의','그쪽으로 씹지 않기'],
+    go:['부딪혀서 깨졌거나 피가 나면 오늘','깨진 뒤 시리거나 아프면 며칠 안에'],dept:['보존과'],ep:[8]},
+  darkOne:{u:'watch',ul:'미루지 말고 검진',name:'신경이 상한 치아의 변색',why:'예전에 부딪힌 이나 깊은 충치가 있던 이가 혼자 어두워지면 치아 속 신경이 상했을 수 있어요. 아프지 않아도 진행될 수 있어요.',
+    home:['언제부터 변했는지, 다친 적 있는지 떠올려 두기'],
+    go:['아프지 않아도 엑스레이로 확인','잇몸에 고름 주머니가 생기면 빨리'],dept:['보존과'],ep:[]},
+  mobile:{u:'soon',name:'치주염 (잇몸뼈가 줄어든 상태)',why:'어른 이가 흔들리는 건 이를 붙잡는 잇몸뼈가 줄었다는 신호인 경우가 많아요. 아프지 않게 진행돼서 늦게 알아채요.',
+    home:['흔들리는 이로 세게 씹지 않기','혀나 손으로 일부러 흔들어 보지 않기','양치는 부드럽게 계속'],
+    go:['잇몸뼈 엑스레이와 잇몸 검사 받기','붓고 고름이 나면 빨리'],dept:['치주과'],ep:[27,20]},
+  missing:{u:'watch',ul:'미루지 말고 상담',name:'빠진 자리를 비워 둔 상태',why:'빈자리가 생기면 옆 이는 기울고 맞은편 이는 내려와요. 잇몸뼈도 시간이 지나며 폭과 높이가 줄어요.',
+    home:['한쪽으로만 씹는 습관 점검','빈자리 옆 이 사이는 치실 더 꼼꼼히'],
+    go:['임플란트·브릿지·틀니 중 무엇이 맞는지 상담. 뼈 상태가 선택지를 정해요'],dept:['보철과'],ep:[25,26]},
+  avulsion:{u:'now',name:'치아가 통째로 빠짐 (치아 탈구)',why:'빠진 영구치는 빨리 제자리에 넣을수록 살릴 가능성이 높아요. 시간이 가장 중요해요.',
+    home:['뿌리는 만지지 말고 씹는 쪽(머리)만 잡기','더러우면 우유나 생리식염수에 잠깐 헹구기. 문지르지 않기','우유에 담아 바로 출발. 없으면 어른은 볼 안쪽에 물고 가기'],
+    go:['지금 바로 치과나 응급실. 1시간 안이 중요해요','아이 유치는 다시 넣지 않아요. 그래도 바로 치과로'],dept:['응급 진료 치과','응급실'],ep:[]},
+  baby:{u:'home',name:'유치가 빠질 시기',why:'보통 6~7세 무렵 아래 앞니부터 흔들리기 시작해요. 영구치가 밀고 올라오는 자연스러운 과정이에요.',
+    home:['저절로 빠질 때까지 기다리기','아이가 혀로 살살 흔드는 건 괜찮아요'],
+    go:['영구치가 뒤에서 나오는데 유치가 안 빠지면','다쳐서 흔들리거나 잇몸이 붓고 아파하면'],dept:['소아치과'],ep:[]},
+  postEndo:{u:'home',name:'신경치료 후 일시적 통증',why:'치아 속이 아니라 뿌리 끝 주변이 잠시 예민해진 경우가 많아요. 날마다 줄어들면 정상 경과예요.',
+    home:['임시로 막아 둔 이로는 단단한 것 씹지 않기','진통제는 안내받은 대로','다음 예약 미루지 않기. 임시 재료는 오래 못 버텨요'],
+    go:['날이 갈수록 심해지거나 잇몸·얼굴이 부으면 치료받은 치과에 연락'],dept:['치료받은 치과'],ep:[16]},
+  postFill:{u:'watch',name:'치료 후 시림, 또는 높이가 안 맞음',why:'때운 직후 며칠은 찬 것에 시릴 수 있어요. 씹을 때 그 이만 먼저 닿는 느낌이면 높이가 맞지 않는 경우예요.',
+    home:['며칠은 너무 찬 것 피하기','씹을 때 그 이가 먼저 닿는지 확인'],
+    go:['먼저 닿는 느낌이면 높이 조정 받기. 금방 끝나요','점점 심해지거나 가만히 있어도 아프면'],dept:['치료받은 치과'],ep:[2]},
+  postAnes:{u:'home',name:'마취가 아직 안 풀린 상태',why:'치과 마취는 치아만이 아니라 볼·입술·혀 감각도 같이 막아요. 그래서 모르고 깨물어 다치기 쉬워요.',
+    home:['감각이 다 돌아온 뒤에 먹기','급하면 반대쪽으로 부드러운 것만','아이는 입술과 볼을 깨물지 않게 지켜보기'],
+    go:['하루가 지나도 감각이 돌아오지 않으면 치료받은 치과에 연락'],dept:['치료받은 치과'],ep:[13]},
+  orthoPoke:{u:'home',name:'교정 철사 끝·장치에 쓸림',why:'이가 움직이면서 맨 뒤 철사 끝이 삐져나올 수 있어요. 한 자리만 콕 찌르면 대개 이 경우예요.',
+    home:['교정 왁스를 동그랗게 말아 찌르는 곳에 덮기','헌 자리는 구내염처럼 자극 줄이기'],
+    go:['왁스로도 계속 찌르면 교정 치과에 연락. 끝만 정리하면 돼요'],dept:['교정과'],ep:[17]},
+  orthoAche:{u:'home',name:'교정력으로 인한 일시적 통증',why:'장치를 새로 끼우거나 조인 뒤 며칠은 이가 들뜨고 씹을 때 아픈 게 흔해요. 보통 며칠 안에 줄어요.',
+    home:['며칠은 부드러운 음식','진통제는 용법대로'],
+    go:['일주일 넘게 심하거나 한 이만 유독 아프면 교정 치과에 연락'],dept:['교정과'],ep:[23]},
+  retainer:{u:'watch',name:'치아가 제자리로 돌아가려는 시기',why:'교정이 끝나도 치아 주변 조직은 한동안 원래 위치로 돌아가려 해요. 유지장치를 빼 두면 조금씩 틀어질 수 있어요.',
+    home:['안내받은 착용 시간 지키기','끼울 때 빡빡하면 이미 움직이기 시작한 신호'],
+    go:['유지장치가 안 들어가면 억지로 끼우지 말고 교정 치과에'],dept:['교정과'],ep:[]}
+};
+
+/* ===== 그리기 ===== */
+const app = document.getElementById('app');
+const stack = [];
+/* 단독 사이트(버셀)에서는 폰 뒤로가기가 이전 단계로 가고, 링크는 같은 창에서 열림 */
+let SA = false; try { SA = window.self === window.top; } catch(e) { SA = false; }
+const TGT = SA ? '' : ' target="_blank" rel="noopener"';
+let focusOn = false;
+const pad = n => '#' + String(n).padStart(2,'0');
+const reel = c => 'https://www.instagram.com/reel/' + c + '/';
+const live = n => EP[n] && EP[n][1];
+
+function villain(){
+  return '<svg viewBox="0 0 120 112" aria-hidden="true">'+
+    '<ellipse class="m-shadow" cx="60" cy="104" rx="34" ry="6"/>'+
+    '<path class="m-body" d="M60 8C96 8 109 38 107 66C105 92 85 101 60 101C35 101 15 92 13 66C11 38 24 8 60 8Z"/>'+
+    '<ellipse class="m-white" cx="40" cy="28" rx="10" ry="5.5" opacity=".35" transform="rotate(-28 40 28)"/>'+
+    '<path class="m-line" d="M33 37L52 43M87 37L68 43" stroke-width="4.5" stroke-linecap="round" fill="none"/>'+
+    '<ellipse class="m-white" cx="44" cy="53" rx="9" ry="10.5"/><ellipse class="m-white" cx="76" cy="53" rx="9" ry="10.5"/>'+
+    '<circle class="m-pupil" cx="47.5" cy="55" r="4.6"/><circle class="m-pupil" cx="79.5" cy="55" r="4.6"/>'+
+    '<ellipse class="m-blush" cx="31" cy="71" rx="7" ry="4" opacity=".85"/><ellipse class="m-blush" cx="89" cy="71" rx="7" ry="4" opacity=".85"/>'+
+    '<path class="m-line" d="M46 72Q60 84 74 72" stroke-width="3.6" stroke-linecap="round" fill="none"/>'+
+    '<path class="m-white" d="M63.5 76.6L66.6 84L70 75.2Z"/>'+
+  '</svg>';
+}
+
+function show(){ focusOn = true; render(); window.scrollTo(0,0); }
+function push(s){
+  stack.push(s);
+  if(SA){ try{ history.pushState({d:stack.length}, ''); }catch(e){} }
+  show();
+}
+function back(){
+  if(stack.length<=1) return;
+  if(SA){ history.back(); return; }
+  stack.pop(); show();
+}
+function home(){
+  if(stack.length<=1) return;
+  if(SA){ history.go(-(stack.length-1)); return; }
+  stack.length = 1; show();
+}
+window.addEventListener('popstate', e => {
+  const d = (e.state && e.state.d) || 1;
+  if(d < stack.length){ stack.length = d; show(); }
+});
+function startSym(id){ const s = SYM.find(x=>x.id===id); if(!s) return; push({v:'q', n:id, sym:s, path:[s.lb]}); }
+function pick(i){
+  const st = stack[stack.length-1]; const [text, to] = Q[st.n].o[i];
+  const path = st.path.concat(text);
+  if(to.startsWith('R:')) push({v:'r', r:to.slice(2), sym:st.sym, path});
+  else push({v:'q', n:to, sym:st.sym, path});
+}
+
+function render(){
+  const s = stack[stack.length-1];
+  if(s.v==='home') app.innerHTML = vHome();
+  else if(s.v==='q') app.innerHTML = vQ(s);
+  else app.innerHTML = vR(s);
+  if(focusOn){ const f = app.querySelector('[data-focus]'); if(f) f.focus({preventScroll:true}); }
+}
+
+function vHome(){
+  const n = Object.keys(EP).filter(live).length;
+  return '<section class="view">'+
+    '<header class="hero"><div class="mascot bob">'+villain()+'</div>'+
+      '<div><p class="eyebrow">치아 살리는 치대생 · @ipsok_villain</p><h1 tabindex="-1" data-focus>어디가 불편해요?</h1></div></header>'+
+    '<p class="lede">증상을 고르고 한두 가지만 답하면, 의심해 볼 것과 집에서 할 일, 찾아갈 진료과를 알려 드려요.</p>'+
+    '<div class="grid">'+SYM.map(x=>
+      '<button class="card" onclick="startSym(\''+x.id+'\')"><span class="lb">'+x.lb+'</span><span class="ht">'+x.ht+'</span></button>').join('')+
+    '</div>'+
+    '<p class="meta">증상 '+SYM.length+'가지 · 「치과 가기 전, 이것만은」 영상 '+n+'편과 연결</p>'+
+    fine()+
+  '</section>';
+}
+
+function vQ(s){
+  const node = Q[s.n];
+  return '<section class="view">'+
+    '<div class="nav"><button class="ghost" onclick="back()">← 이전</button><div class="chiprow"><span class="tag">'+s.sym.tag+'</span><div class="mascot">'+villain()+'</div></div></div>'+
+    '<div class="qwrap"><p class="eyebrow">'+s.path.join(' › ')+'</p><h2 tabindex="-1" data-focus>'+node.q+'</h2></div>'+
+    '<div class="opts">'+node.o.map((o,i)=>
+      '<button class="opt" onclick="pick('+i+')"><span>'+o[0]+'</span><span class="ar" aria-hidden="true">›</span></button>').join('')+
+    '</div>'+
+  '</section>';
+}
+
+function vReel(eps){
+  const lives = eps.filter(live), soon = eps.filter(n=>EP[n] && !live(n));
+  const playIc = '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1.5L12.5 7L3 12.5Z"/></svg>';
+  let head, btn, more = '';
+  if(lives.length){
+    const m = lives[0];
+    head = '<p class="k">이 증상, 입속빌런이 영상으로 풀어 뒀어요</p><p class="t"><span class="no">'+pad(m)+'</span>'+EP[m][0]+'</p>';
+    btn = '<a class="play" href="'+reel(EP[m][1])+'"'+TGT+'>'+playIc+'릴스로 보기</a>';
+    const rest = lives.slice(1);
+    if(rest.length || soon.length){
+      more = '<div class="more">'+
+        (rest.length ? '<p>같이 보면 좋은 편</p>'+rest.map(n=>'<a href="'+reel(EP[n][1])+'"'+TGT+'><span class="no">'+pad(n)+'</span><span>'+EP[n][0]+'</span></a>').join('') : '')+
+        (soon.length ? '<p>곧 올라올 편</p>'+soon.map(n=>'<span class="soon-chip"><span class="b">'+pad(n)+'</span><span>'+EP[n][0]+'</span></span>').join('') : '')+
+      '</div>';
+    }
+  } else if(soon.length){
+    const m = soon[0];
+    head = '<p class="k">이 주제 영상, 곧 올라와요</p><p class="t"><span class="no">'+pad(m)+'</span>'+EP[m][0]+'</p>';
+    btn = '<a class="play" href="'+PROFILE+'"'+TGT+'>팔로우하고 먼저 보기</a>';
+  } else {
+    head = '<p class="k">이 주제는 아직 영상이 없어요</p><p class="t">댓글로 요청하면 다음 편 순서가 당겨져요</p>';
+    btn = '<a class="play" href="'+PROFILE+'"'+TGT+'>@ipsok_villain 에서 요청하기</a>';
+  }
+  return '<div class="reel"><div class="mascot">'+villain()+'</div><div>'+head+'</div>'+btn+more+'</div>';
+}
+
+function vR(s){
+  const r = R[s.r];
+  const depts = r.dept.length ?
+    '<div class="depts">'+r.dept.map(d=>'<div class="dept"><b>'+d+'</b><span>'+(DEPT[d]||'')+'</span></div>').join('')+'</div>'+
+    '<p class="note">진료과는 어떤 분야를 보는 곳을 찾을지의 기준이에요. 대부분은 가까운 치과에서 먼저 봐도 괜찮아요.</p>' : '';
+  return '<section class="view">'+
+    '<div class="nav"><button class="ghost" onclick="back()">← 이전</button><button class="ghost" onclick="home()">처음으로</button></div>'+
+    '<div class="dx"><span class="upill u-'+r.u+'">'+(r.ul||ULABEL[r.u])+'</span>'+
+      '<p class="path">'+s.path.join(' › ')+'</p>'+
+      '<p class="eyebrow">의심해 볼 수 있는 것</p><h2 tabindex="-1" data-focus>'+r.name+'</h2>'+
+      '<p class="why">'+r.why+'</p></div>'+
+    vReel(r.ep)+
+    '<div class="panel care"><h3>지금 집에서 할 것</h3><ul>'+r.home.map(x=>'<li>'+x+'</li>').join('')+'</ul></div>'+
+    '<div class="panel goto"><h3>이럴 땐 치과로</h3><ul>'+r.go.map(x=>'<li>'+x+'</li>').join('')+'</ul>'+depts+'</div>'+
+    '<div class="foot">'+
+      '<a class="btn-line" href="'+PROFILE+'"'+TGT+'>@ipsok_villain 팔로우하고 다음 편 받기</a>'+
+      '<button class="btn-soft" onclick="home()">다른 증상 보기</button>'+
+    '</div>'+
+    fine()+
+  '</section>';
+}
+
+function fine(){
+  return '<p class="fine">치대생이 교과서 기준으로 정리한 참고용 안내예요. 진단이나 치료 처방이 아니며, 정확한 판단은 치과의사의 진찰이 필요해요.</p>';
+}
+
+/* 시작: #jaw 처럼 증상 id로 들어오면 바로 그 질문부터 (스토리 링크용) */
+stack.push({v:'home'});
+if(SA){ try{ history.replaceState({d:1}, ''); }catch(e){} }
+render();
+const h = (location.hash||'').slice(1);
+if(Q[h] && SYM.some(x=>x.id===h)) startSym(h);
+</script>
+
+</body>
+</html>
